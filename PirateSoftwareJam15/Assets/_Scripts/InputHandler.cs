@@ -38,6 +38,7 @@ public class InputHandler : MonoBehaviour {
     private void Update() {
         Movement = movementInput.ReadValue<Vector2>();
         Look = lookInput.ReadValue<Vector2>();
+        Debug.Log(Look);
     }
 
     private void OnEnable() {
