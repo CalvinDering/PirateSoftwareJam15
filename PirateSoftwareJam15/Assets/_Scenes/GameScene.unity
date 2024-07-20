@@ -191,6 +191,46 @@ MonoBehaviour:
   - {fileID: 8137342668561067894, guid: d398ce5993d2fa7499912961841448c5, type: 3}
   - {fileID: 6076143191973084218, guid: de885001cc187094e99f5b0db4fa2b5f, type: 3}
   - {fileID: 4710831983811256497, guid: 9f2c166e418b7e54eb8f854d09310407, type: 3}
+  roomPrefabs:
+  - prefab: {fileID: 2558383610814083307, guid: d80cda467e0e58f428b73a0ca908a941,
+      type: 3}
+    hallSize: 1
+  - prefab: {fileID: 8269917157327928795, guid: 4a2a7d943246bf24da9e44f93d3ea645,
+      type: 3}
+    hallSize: 1
+  - prefab: {fileID: 1046726902076537042, guid: 5cc03375fb683154282feaf0904afed5,
+      type: 3}
+    hallSize: 1
+  - prefab: {fileID: 2557999642278478271, guid: 6895de24d3924364ebd17fbba06620f6,
+      type: 3}
+    hallSize: 1
+  - prefab: {fileID: 7807067656158462502, guid: c10700ad46eae2e4796362e24a2e6b27,
+      type: 3}
+    hallSize: 2
+  - prefab: {fileID: 7208434013978168100, guid: b6c5cb5212c8a2749850e584d057d4ff,
+      type: 3}
+    hallSize: 2
+  - prefab: {fileID: 7939052026903854264, guid: 3959ed675d4db4745b81e0041f325e83,
+      type: 3}
+    hallSize: 2
+  - prefab: {fileID: 6896600466228517430, guid: b77a99507b31cd242a70e189e4d6af12,
+      type: 3}
+    hallSize: 2
+  - prefab: {fileID: 1860437591934560113, guid: c8f0f379d57f96b41a92c1c80e880ba5,
+      type: 3}
+    hallSize: 3
+  - prefab: {fileID: 812011683260459864, guid: bd256039d3f92d14ca960ff86f1ab5fb, type: 3}
+    hallSize: 3
+  hallwayPrefabs:
+  - prefab: {fileID: 5352093075515285054, guid: 0dfdb67fa1c91a8418e391610215e8ed,
+      type: 3}
+    hallSize: 1
+  - prefab: {fileID: 9033119691357950275, guid: 8966d1db9722d884892d89da3a09d352,
+      type: 3}
+    hallSize: 3
+  - prefab: {fileID: 5533347296694065308, guid: dce229bff78abb54e968df222ae46548,
+      type: 3}
+    hallSize: 3
   wallPrefabs:
   - {fileID: 2059883861225857007, guid: 8ccbb4ca8d7108b43a885f57c6a18628, type: 3}
   - {fileID: 2939586857288750274, guid: 298f8f936fab69c4aac4da21f00c32d7, type: 3}
@@ -201,10 +241,11 @@ MonoBehaviour:
   - {fileID: 1581617043321832524, guid: 12f5ce4ad8302cb4e9df3ceec136ef7a, type: 3}
   - {fileID: 8462528170691342358, guid: ba0a72922650c724e8b0a2c9e89ba9a8, type: 3}
   player: {fileID: 1965036772}
-  levelWidth: 4
-  levelHeight: 4
+  levelWidth: 10
+  levelHeight: 10
   tileSize: 5
-  wallSkip: 0.75
+  wallSkipWidth: 0.8
+  wallSkipHeight: 0.75
 --- !u!4 &276537809
 Transform:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour {
 
     [SerializeField] private GameObject[] floorPrefabs;
+    [SerializeField] private Room[] roomPrefabs;
+    [SerializeField] private Room[] hallwayPrefabs;
     [SerializeField] private GameObject[] wallPrefabs;
     [SerializeField] private int wallNoWindowIndex = 2;
     [SerializeField] private GameObject[] doorPrefabs;
@@ -21,6 +23,7 @@ public class LevelGenerator : MonoBehaviour {
     private GameObject[,] levelWall2;
     private GameObject[,] levelDoor;
     private GameObject floorParent;
+    private GameObject roomParent;
     private GameObject wallParent1;
     private GameObject wallParent2;
     private GameObject doorParent;
@@ -31,6 +34,7 @@ public class LevelGenerator : MonoBehaviour {
         levelWall2 = new GameObject[levelWidth, levelHeight];
         levelDoor = new GameObject[levelWidth, levelHeight];
         floorParent = transform.Find("Floor").gameObject;
+        roomParent = transform.Find("Room").gameObject;
         wallParent1 = transform.Find("Wall1").gameObject;
         wallParent2 = transform.Find("Wall2").gameObject;
         doorParent = transform.Find("Door").gameObject;
@@ -39,15 +43,22 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     private void GenerateLevel() {
+
+        
         if(floorParent != null) {
             GenerateFloor();
         }
+
+        if(roomParent != null) {
+            GenerateRoom();
+        }
+        /*
         if(wallParent1 != null && wallParent2 != null) {
             GenerateWall();
         }
         if(doorParent != null) {
             GenerateDoor();
-        }
+        }*/
 
         SetupPlayer();
     }
@@ -59,6 +70,15 @@ public class LevelGenerator : MonoBehaviour {
                 int randomFloor = Random.Range(0, floorPrefabs.Length);
                 levelFloor[x, z] = Instantiate(floorPrefabs[randomFloor], new Vector3(x * tileSize, 0, z * tileSize), Quaternion.identity, floorParent.transform);
             }
+        }
+    }
+
+    private void GenerateRoom() {
+        int x = levelWidth / 2;
+        for(int z = 0; z < levelHeight; z++) {
+
+            int randomFloor = Random.Range(0, floorPrefabs.Length);
+            levelFloor[x, z] = Instantiate(floorPrefabs[randomFloor], new Vector3(x * tileSize, 0, z * tileSize), Quaternion.identity, floorParent.transform);
         }
     }
 
@@ -113,6 +133,12 @@ public class LevelGenerator : MonoBehaviour {
         Vector3 spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Count)];
         spawnpoint += new Vector3(tileSize / 2, 1, tileSize / 2);
         player.GetComponent<Rigidbody>().position = spawnpoint;
+    }
+
+    [System.Serializable]
+    public class Room {
+        public GameObject prefab;
+        public int hallSize;
     }
 
 }
