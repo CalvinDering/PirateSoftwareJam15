@@ -53,6 +53,7 @@ Material:
     m_Floats:
     - _Alpha: 0.5
     - _EdgeBlend: 0.8
+    - _FadeDistance: 6.5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
