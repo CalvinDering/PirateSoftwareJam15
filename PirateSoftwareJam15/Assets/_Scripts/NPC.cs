@@ -14,6 +14,7 @@ public class NPC : MonoBehaviour, IInteractable {
     private Waypoint currentWaypoint = null;
     private Vector3 targetPosition = Vector3.zero;
 
+    private bool pauseMoveing = false;
     private float waitingTime;
     private float waitingTimer;
     private float targetAngle;
@@ -23,6 +24,10 @@ public class NPC : MonoBehaviour, IInteractable {
     }
 
     private void FixedUpdate() {
+        if(pauseMoveing) {
+            return;
+        }
+
         if(waitingTimer > 0) {
             waitingTimer -= Time.fixedDeltaTime;
             return;
@@ -75,6 +80,8 @@ public class NPC : MonoBehaviour, IInteractable {
     }
 
     public void Interact(GameObject interactor) {
-
+        if(interactor.TryGetComponent(out PlayerController player)) {
+            pauseMoveing = !pauseMoveing;
+        }
     }
 }
