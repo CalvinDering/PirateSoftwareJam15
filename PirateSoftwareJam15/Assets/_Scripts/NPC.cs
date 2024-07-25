@@ -24,22 +24,20 @@ public class NPC : MonoBehaviour, IInteractable {
     }
 
     private void FixedUpdate() {
-        if(pauseMoveing) {
-            return;
-        }
-
         if(waitingTimer > 0) {
             waitingTimer -= Time.fixedDeltaTime;
             return;
         }
 
-        CheckNextWaypoint();
-
-        LookAtWaypoint();
-
-        if(targetAngle <= 0.1f) {
-            npcRB.AddForceAtPosition(transform.forward * movementSpeed, transform.position, ForceMode.Acceleration);
-        }
+        if(!pauseMoveing) {
+            CheckNextWaypoint();
+            LookAtTarget();
+            if(targetAngle <= 0.1f) {
+                npcRB.AddForceAtPosition(transform.forward * movementSpeed, transform.position, ForceMode.Acceleration);
+            }
+        } else {
+            LookAtTarget();
+        }    
     }
 
     private void CheckNextWaypoint() {
@@ -65,8 +63,8 @@ public class NPC : MonoBehaviour, IInteractable {
         return allWaypoints.OrderBy(w => Vector3.Distance(transform.position, w.transform.position)).FirstOrDefault();
     }
 
-    private void LookAtWaypoint() {
-        Vector3 directionToTarget = currentWaypoint.transform.position - transform.position;
+    private void LookAtTarget() {
+        Vector3 directionToTarget = targetPosition - transform.position;
         directionToTarget.y = 0.0f;
 
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
@@ -82,6 +80,8 @@ public class NPC : MonoBehaviour, IInteractable {
     public void Interact(GameObject interactor) {
         if(interactor.TryGetComponent(out PlayerController player)) {
             pauseMoveing = !pauseMoveing;
+
+            targetPosition = player.transform.position;
         }
     }
 }

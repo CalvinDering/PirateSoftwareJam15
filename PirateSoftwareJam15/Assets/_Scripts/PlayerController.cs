@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Transform interactionPoint;
     [SerializeField] private float interactionRange;
 
+    private bool pauseMoving = false;
+
     float rotationX = 0f;
 
     private void Awake() {
@@ -26,9 +28,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Movement() {
-        Vector3 move = cameraTransform.forward * inputHandler.Movement.y + cameraTransform.right * inputHandler.Movement.x;
-        move.y = 0f;
-        playerRB.AddForce(move.normalized * playerSpeed, ForceMode.VelocityChange);
+        if(!pauseMoving) {
+            Vector3 move = cameraTransform.forward * inputHandler.Movement.y + cameraTransform.right * inputHandler.Movement.x;
+            move.y = 0f;
+            playerRB.AddForce(move.normalized * playerSpeed, ForceMode.VelocityChange);
+        }
 
         rotationX += -inputHandler.Look.y * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
@@ -41,6 +45,10 @@ public class PlayerController : MonoBehaviour {
         if(Physics.Raycast(ray, out RaycastHit hit, interactionRange)) {
             if(hit.collider.gameObject.TryGetComponent(out IInteractable interactable)) {
                 interactable.Interact(gameObject);
+
+                if(hit.collider.gameObject.TryGetComponent(out NPC npc)) {
+                    pauseMoving = !pauseMoving;
+                }
             }
         }
     }
