@@ -43,13 +43,16 @@ public class PlayerController : MonoBehaviour {
     public void Interact() {
         Ray ray = new Ray(interactionPoint.position, interactionPoint.forward);
         if(Physics.Raycast(ray, out RaycastHit hit, interactionRange)) {
-            if(hit.collider.gameObject.TryGetComponent(out IInteractable interactable)) {
+            if(hit.collider.gameObject.TryGetComponent(out ILightable lightable)) {
+                lightable.Lighten();
+            }
+            /*if(hit.collider.gameObject.TryGetComponent(out IInteractable interactable)) {
                 interactable.Interact(gameObject);
 
                 if(hit.collider.gameObject.TryGetComponent(out NPC npc)) {
                     pauseMoving = !pauseMoving;
                 }
-            }
+            }*/
         }
     }
 

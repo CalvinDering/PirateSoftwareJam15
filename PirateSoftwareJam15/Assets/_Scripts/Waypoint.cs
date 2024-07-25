@@ -9,7 +9,7 @@ public class Waypoint : MonoBehaviour {
     public Waypoint[] nextWaypoint;
     public float waitingTime;
 
-    private void OnDrawGizmosSelected() {
+    private void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, minDistanceToReachWaypoint);
     }

@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour, IInteractable {
 
     private Waypoint currentWaypoint = null;
     private Vector3 targetPosition = Vector3.zero;
+    private Vector3 originTargetPosition;
 
     private bool pauseMoveing = false;
     private float waitingTime;
@@ -21,6 +22,7 @@ public class NPC : MonoBehaviour, IInteractable {
 
     private void Awake() {
         npcRB = GetComponent<Rigidbody>();
+        originTargetPosition = transform.position + transform.forward;
     }
 
     private void FixedUpdate() {
@@ -32,9 +34,11 @@ public class NPC : MonoBehaviour, IInteractable {
         if(!pauseMoveing) {
             CheckNextWaypoint();
             LookAtTarget();
-            if(targetAngle <= 0.1f) {
-                npcRB.AddForceAtPosition(transform.forward * movementSpeed, transform.position, ForceMode.Acceleration);
-            }
+            if(currentWaypoint != null) {
+                if(targetAngle <= 0.1f) {
+                    npcRB.AddForceAtPosition(transform.forward * movementSpeed, transform.position, ForceMode.Acceleration);
+                }
+            }                   
         } else {
             LookAtTarget();
         }    
@@ -55,7 +59,8 @@ public class NPC : MonoBehaviour, IInteractable {
                 waitingTimer = waitingTime;
                 currentWaypoint = currentWaypoint.nextWaypoint[Random.Range(0, currentWaypoint.nextWaypoint.Length)];
             }
-
+        } else {
+            targetPosition = originTargetPosition;
         }
     }
 
