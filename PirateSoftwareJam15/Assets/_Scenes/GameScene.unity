@@ -2026,6 +2026,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Musician
       objectReference: {fileID: 0}
+    - target: {fileID: 7497603149384016260, guid: 78e307edeff1ac1469b35c8a26664936,
+        type: 3}
+      propertyPath: allWaypoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497603149384016260, guid: 78e307edeff1ac1469b35c8a26664936,
+        type: 3}
+      propertyPath: allWaypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 35900269}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

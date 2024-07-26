@@ -10,6 +10,7 @@ public class NPC : MonoBehaviour, IInteractable {
     [SerializeField] private float turnSpeed;
 
     private Rigidbody npcRB;
+    private Animator animator;
 
     private Waypoint currentWaypoint = null;
     private Vector3 targetPosition = Vector3.zero;
@@ -22,26 +23,33 @@ public class NPC : MonoBehaviour, IInteractable {
 
     private void Awake() {
         npcRB = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         originTargetPosition = transform.position + transform.forward;
     }
 
     private void FixedUpdate() {
+
+        float moving = 0f;
+
         if(waitingTimer > 0) {
             waitingTimer -= Time.fixedDeltaTime;
-            return;
+        } else {
+            if(!pauseMoveing) {
+                CheckNextWaypoint();
+                LookAtTarget();
+
+                if(currentWaypoint != null) {
+                    if(targetAngle <= 0.1f) {
+                        npcRB.AddForceAtPosition(transform.forward * movementSpeed, transform.position, ForceMode.Acceleration);
+                        moving = npcRB.velocity.magnitude;
+                    }
+                }
+            } else {
+                LookAtTarget();
+            }
         }
 
-        if(!pauseMoveing) {
-            CheckNextWaypoint();
-            LookAtTarget();
-            if(currentWaypoint != null) {
-                if(targetAngle <= 0.1f) {
-                    npcRB.AddForceAtPosition(transform.forward * movementSpeed, transform.position, ForceMode.Acceleration);
-                }
-            }                   
-        } else {
-            LookAtTarget();
-        }    
+        animator.SetFloat("moving", moving);
     }
 
     private void CheckNextWaypoint() {
