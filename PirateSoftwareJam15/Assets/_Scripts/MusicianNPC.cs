@@ -12,6 +12,8 @@ public class MusicianNPC : NPC, ILightable {
     [SerializeField] private float checkRadius = 20f;
     [SerializeField] private LayerMask playerLayerMask;
 
+    private float problemValue;
+
     private float cooldownTimer;
     private bool isProblemSpawned = false;
 
@@ -19,16 +21,21 @@ public class MusicianNPC : NPC, ILightable {
 
     private void Update() {
         if(isProblemSpawned) {
-            return;
-        }
-        if(CheckForPlayer()) {
-            cooldownTimer = cooldownTime * Random.Range(0.2f, 0.8f);
-        }
-        if(cooldownTimer <= 0) {
-            SpawnProblem();
+            problemValue = Mathf.Lerp(problemValue, 1, Time.deltaTime);
         } else {
-            cooldownTimer -= Time.deltaTime;
+            problemValue = Mathf.Lerp(problemValue, 0, Time.deltaTime);
+
+            if(CheckForPlayer()) {
+                cooldownTimer = cooldownTime * Random.Range(0.2f, 0.8f);
+            }
+            if(cooldownTimer <= 0) {
+                SpawnProblem();
+            } else {
+                cooldownTimer -= Time.deltaTime;
+            }
         }
+
+        animator.SetFloat("problem", problemValue);
     }
 
     private void SpawnProblem() {

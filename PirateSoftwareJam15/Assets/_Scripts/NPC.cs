@@ -10,7 +10,7 @@ public class NPC : MonoBehaviour, IInteractable {
     [SerializeField] private float turnSpeed;
 
     private Rigidbody npcRB;
-    private Animator animator;
+    protected Animator animator;
 
     private Waypoint currentWaypoint = null;
     private Vector3 targetPosition = Vector3.zero;

@@ -1373,7 +1373,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 352efd3284784e24eb36b441182417ef, type: 2}
+      objectReference: {fileID: 9100000, guid: cba1f72901077b3478a8f4504620ba37, type: 2}
     - target: {fileID: 747748505346782537, guid: 04ce09ca007d9c049b28778aed0b7d74,
         type: 3}
       propertyPath: m_ApplyRootMotion
@@ -1803,17 +1803,17 @@ PrefabInstance:
     - target: {fileID: 5109173725653345914, guid: c56142e249c411e4296d1ed9f04cdfbd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 2.424
       objectReference: {fileID: 0}
     - target: {fileID: 5109173725653345914, guid: c56142e249c411e4296d1ed9f04cdfbd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5109173725653345914, guid: c56142e249c411e4296d1ed9f04cdfbd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.6
+      value: -0.888
       objectReference: {fileID: 0}
     - target: {fileID: 5109173725653345914, guid: c56142e249c411e4296d1ed9f04cdfbd,
         type: 3}
@@ -2029,7 +2029,7 @@ PrefabInstance:
     - target: {fileID: 7497603149384016260, guid: 78e307edeff1ac1469b35c8a26664936,
         type: 3}
       propertyPath: allWaypoints.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7497603149384016260, guid: 78e307edeff1ac1469b35c8a26664936,
         type: 3}
