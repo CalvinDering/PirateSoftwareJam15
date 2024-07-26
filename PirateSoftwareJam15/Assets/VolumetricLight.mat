@@ -51,9 +51,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.5
-    - _EdgeBlend: 0.8
-    - _FadeDistance: 6.5
+    - _Alpha: 0.3
+    - _EdgeBlend: 0.4
+    - _FadeDistance: 4
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
