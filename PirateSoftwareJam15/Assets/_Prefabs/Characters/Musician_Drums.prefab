@@ -1223,7 +1223,7 @@ MonoBehaviour:
   allWaypoints: []
   movementSpeed: 30
   turnSpeed: 5
-  problemType: 0
+  problemType: 3
   problemObjectPrefab: {fileID: 10173766682894404, guid: 17ea25fc9ae74234a815041ec9fe6c3c,
     type: 3}
   spawnPositions:
@@ -1235,6 +1235,10 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  lerpAnimations: 1
+  energy: 0
+  isProblemSpawned: 0
+  nightStarted: 0
 --- !u!1 &5629423643067321699
 GameObject:
   m_ObjectHideFlags: 0
