@@ -54,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MusicianAnimationController
+  m_Name: MusicianDrumsAnimationController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: moving
@@ -107,7 +107,7 @@ BlendTree:
     m_DirectBlendParameter: moving
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 2c1478fbbb66e644b97e9b12a703d3a7, type: 2}
+    m_Motion: {fileID: 7400000, guid: 7af630119a1e130478632e8fb23de692, type: 2}
     m_Threshold: 2
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1

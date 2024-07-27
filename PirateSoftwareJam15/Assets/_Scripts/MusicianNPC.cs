@@ -6,27 +6,40 @@ public class MusicianNPC : NPC, ILightable {
 
     [SerializeField] private ProblemType problemType;
     [SerializeField] private GameObject problemObjectPrefab;
-    [SerializeField] private Transform spawnPosition;
+    [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private float cooldownTime = 10f;
     [SerializeField] private float despawnWaitingTime = 2f;
     [SerializeField] private float checkRadius = 20f;
     [SerializeField] private LayerMask playerLayerMask;
+    [SerializeField] private bool lerpAnimations = true;
 
     private float problemValue;
 
     private float cooldownTimer;
     private bool isProblemSpawned = false;
 
-    private GameObject problemObject;
+    private GameObject[] problemObject;
+
+    private void Awake() {
+       problemObject = new GameObject[spawnPositions.Length];
+    }
 
     private void Update() {
         if(isProblemSpawned) {
-            problemValue = Mathf.Lerp(problemValue, 1, Time.deltaTime);
+            if(lerpAnimations) {
+                problemValue = Mathf.Lerp(problemValue, 1, Time.deltaTime);
+            } else {
+                problemValue = 1;
+            }
         } else {
-            problemValue = Mathf.Lerp(problemValue, 0, Time.deltaTime);
+            if(lerpAnimations) {
+                problemValue = Mathf.Lerp(problemValue, 0, Time.deltaTime);
+            } else {
+                problemValue = 0;
+            }
 
             if(CheckForPlayer()) {
-                cooldownTimer = cooldownTime * Random.Range(0.2f, 0.8f);
+                cooldownTimer = cooldownTime * Random.Range(0.8f, 1.2f);
             }
             if(cooldownTimer <= 0) {
                 SpawnProblem();
@@ -34,18 +47,22 @@ public class MusicianNPC : NPC, ILightable {
                 cooldownTimer -= Time.deltaTime;
             }
         }
-
+        Debug.Log(problemValue);
         animator.SetFloat("problem", problemValue);
     }
 
     private void SpawnProblem() {
-        problemObject = Instantiate(problemObjectPrefab, spawnPosition);
+        for(int i = 0; i < spawnPositions.Length; i++) {
+            problemObject[i] = Instantiate(problemObjectPrefab, spawnPositions[i]);
+        }
         isProblemSpawned = true;
     }
 
     private IEnumerator DespawnProblemObject() {
         yield return new WaitForSeconds(despawnWaitingTime);
-        Destroy(problemObject);
+        for(int i = 0; i < spawnPositions.Length; i++) {
+            Destroy(problemObject[i]);
+        }
         cooldownTimer = cooldownTime;
         isProblemSpawned = false;
     }
