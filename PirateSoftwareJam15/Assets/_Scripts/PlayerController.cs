@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float maxLightRange;
     [SerializeField] private float lightAngle;
 
+    [HideInInspector] public bool gameStated = false;
     private bool pauseMoving = false;
 
     float rotationX = 0f;
@@ -29,10 +30,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
+        if(!gameStated) {
+            return;
+        }
         CheckLight();
     }
 
     private void FixedUpdate() {
+        if(!gameStated) {
+            return;
+        }
         Movement();
     }
 

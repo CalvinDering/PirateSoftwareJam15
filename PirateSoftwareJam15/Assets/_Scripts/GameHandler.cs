@@ -10,6 +10,7 @@ public class GameHandler : MonoBehaviour {
 
     private List<MusicianNPC> musicians;
 
+    [SerializeField] private PlayerController player;
     [SerializeField] private int mainMenuScene;
     [SerializeField] private float nightTime;
     [SerializeField] private GameObject startgameText;
@@ -25,6 +26,7 @@ public class GameHandler : MonoBehaviour {
         musicians = FindObjectsOfType<MusicianNPC>().ToList();
         energy = 100;
         endgameStats.SetActive(false);
+        player.gameStated = false;
     }
 
     private void Update() {
@@ -52,16 +54,17 @@ public class GameHandler : MonoBehaviour {
         nightStarted = true;
         musicians.ForEach(m => m.StartNight());
         startgameText.SetActive(false);
+        player.gameStated = true;
     }
 
     private void EndNight() {
         GetMusicianEnergy();
         float reachedEnergy = energy / musicians.Count * 100 / nightTime;
-        Debug.Log("Night finished with Energy at " + reachedEnergy);
         nightStarted = false;
-        int convertedEnergy = Mathf.Clamp((int) energy, 0, 100);
-        energyText.text = convertedEnergy.ToString();
+        int convertedEnergy = Mathf.Clamp((int) reachedEnergy, 0, 100);
+        energyText.text = convertedEnergy.ToString() + "%";
         endgameStats.SetActive(true);
+        player.gameStated = false;
     }
 
     public void Retry() {
