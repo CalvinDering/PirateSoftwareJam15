@@ -13,10 +13,12 @@ public class MusicianNPC : NPC, ILightable {
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private bool lerpAnimations = true;
 
+    [HideInInspector] public float energy;
     private float problemValue;
 
     private float cooldownTimer;
-    private bool isProblemSpawned = false;
+    [HideInInspector] public bool isProblemSpawned = false;
+    public bool nightStarted = false;
 
     private GameObject[] problemObject;
 
@@ -25,6 +27,10 @@ public class MusicianNPC : NPC, ILightable {
     }
 
     private void Update() {
+        if(!nightStarted) {
+            return;
+        }
+
         if(isProblemSpawned) {
             if(lerpAnimations) {
                 problemValue = Mathf.Lerp(problemValue, 1, Time.deltaTime);
@@ -46,9 +52,18 @@ public class MusicianNPC : NPC, ILightable {
             } else {
                 cooldownTimer -= Time.deltaTime;
             }
+            energy += Time.deltaTime;
         }
-        Debug.Log(problemValue);
         animator.SetFloat("problem", problemValue);
+    }
+
+    public void StartNight() {
+        energy = 0;
+        nightStarted = true;
+    }
+
+    public void EndNight() {
+        nightStarted = false;
     }
 
     private void SpawnProblem() {
