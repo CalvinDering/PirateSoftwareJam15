@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Retro
-  m_Shader: {fileID: -6465566751694194690, guid: 81d8ad6df72cfa347abfffe3f789e198,
+  m_Name: Pixelated
+  m_Shader: {fileID: -6465566751694194690, guid: 6176565a847a27d4aa3a6adbdb1392d7,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,9 +38,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorResolution: 32
-    - _DitherSpread: 0.00001
-    m_Colors:
-    - _Vector4: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _Vector4_1: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _PixelCount: 256
+    m_Colors: []
   m_BuildTextureStacks: []

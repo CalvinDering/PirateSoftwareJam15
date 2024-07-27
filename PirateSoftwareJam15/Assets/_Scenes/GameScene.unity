@@ -2623,7 +2623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1965036777}
   mainMenuScene: 0
-  nightTime: 10
+  nightTime: 1000
   startgameText: {fileID: 1230079901}
   endgameStats: {fileID: 916547709}
   energyText: {fileID: 896557153}
@@ -3167,6 +3167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970231877668832644, guid: 10e186224b22f8d4c81d84454978fa97,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
