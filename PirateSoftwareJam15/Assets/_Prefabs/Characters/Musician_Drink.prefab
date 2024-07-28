@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2446407585547018887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.571, y: 0, z: -1.78}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -109,6 +109,12 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  lerpAnimations: 1
+  musicianSpawns:
+  - {fileID: 0}
+  energy: 0
+  isProblemSpawned: 0
+  nightStarted: 0
 --- !u!1 &6326074965825545499
 GameObject:
   m_ObjectHideFlags: 0

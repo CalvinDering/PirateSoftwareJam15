@@ -10,6 +10,7 @@ public class GameHandler : MonoBehaviour {
 
     private List<MusicianNPC> musicians;
 
+    [SerializeField] private MusicianSpawn[] musicianSpawns;
     [SerializeField] private PlayerController player;
     [SerializeField] private int mainMenuScene;
     [SerializeField] private float nightTime;
@@ -23,7 +24,12 @@ public class GameHandler : MonoBehaviour {
     private float energy;
 
     private void Awake() {
-        musicians = FindObjectsOfType<MusicianNPC>().ToList();
+        musicians = new List<MusicianNPC>();
+        for(int i = 0; i < musicianSpawns.Length; i++) {
+            int spawnIndex = Random.Range(0, musicianSpawns[i].spawnpoints.Length);
+            MusicianNPC musician = Instantiate(musicianSpawns[i].musician, musicianSpawns[i].spawnpoints[spawnIndex]);
+            musicians.Add(musician);
+        }
         energy = 100;
         endgameStats.SetActive(false);
         player.gameStated = false;
@@ -71,4 +77,10 @@ public class GameHandler : MonoBehaviour {
         SceneManager.LoadScene(mainMenuScene);
     }
 
+}
+
+[System.Serializable]
+public class MusicianSpawn {
+    public Transform[] spawnpoints;
+    public MusicianNPC musician;
 }
