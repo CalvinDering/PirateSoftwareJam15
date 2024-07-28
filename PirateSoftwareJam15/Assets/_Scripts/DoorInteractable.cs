@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoorInteractable : MonoBehaviour, IInteractable {
 
+    [SerializeField] private float rotationOffset = 0f;
     [SerializeField] private float rotationAngle = 120f;
     [SerializeField] private float rotationSpeed = 5f;
 
@@ -18,10 +19,10 @@ public class DoorInteractable : MonoBehaviour, IInteractable {
             return;
         }
 
-        if(Quaternion.Angle(transform.rotation, targetRotation) <= 0.01f) {
+        if(Quaternion.Angle(transform.localRotation, targetRotation) <= 0.01f) {
             isMoving = false;
         } else {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
     }
@@ -31,7 +32,7 @@ public class DoorInteractable : MonoBehaviour, IInteractable {
             return;
         }
 
-        targetRotation = Quaternion.Euler(0, (isOpen ? 0 : 1) * rotationAngle, 0);
+        targetRotation = Quaternion.Euler(0, (isOpen ? 0 : 1) * rotationAngle + rotationOffset, 0);
 
         isOpen = !isOpen;
         isMoving = true;
