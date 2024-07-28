@@ -59,7 +59,10 @@ public class PlayerController : MonoBehaviour {
     public void CheckLight() {
         RaycastHit[] hits = ConeCastAll(lightPoint.position, lightRadius, lightPoint.forward, maxLightRange, lightAngle);
         if(hits.Length > 0) {
-            hits.Where(c => c.collider.gameObject.TryGetComponent(out ILightable lightable)).ToList().ForEach(l => l.collider.GetComponent<ILightable>().Lighten());
+            if(hits[0].collider.gameObject.TryGetComponent(out ILightable lightable)) {
+                lightable.Lighten();
+            }
+            //hits.Where(c => c.collider.gameObject.TryGetComponent(out ILightable lightable)).ToList().ForEach(l => l.collider.GetComponent<ILightable>().Lighten());
         }
     }
 
@@ -95,7 +98,7 @@ public class PlayerController : MonoBehaviour {
 
         RaycastHit[] coneCastHits = new RaycastHit[coneCastHitList.Count];
         coneCastHits = coneCastHitList.ToArray();
-
+        coneCastHits.OrderBy(h => h.transform.position - origin);
         return coneCastHits;
 
     }
