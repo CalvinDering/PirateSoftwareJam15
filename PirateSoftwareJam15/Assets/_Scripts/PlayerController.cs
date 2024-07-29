@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour {
         RaycastHit[] hits = Physics.SphereCastAll(lightPoint.position - new Vector3(0, 0, lightRadius), lightRadius, lightPoint.forward, maxLightRange);
         for(int i = 0; i < hits.Length; i++) {
             if(hits[i].collider.gameObject.TryGetComponent(out MusicianNPC musician)) {
-                Debug.Log("Detected Musician " + musician.name);
                 if(musician.GetRoom().IsInside(transform.position)) {
                     musician.Lighten();
                 }

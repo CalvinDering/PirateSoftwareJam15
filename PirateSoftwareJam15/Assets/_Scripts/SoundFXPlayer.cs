@@ -5,7 +5,9 @@ using UnityEngine;
 public class SoundFXPlayer : MonoBehaviour {
 
     [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private AudioClip[] audioClips2;
     [SerializeField] private float audioCooldown;
+    [SerializeField] private bool updateManually = false;
 
     private AudioSource audioSource;
 
@@ -17,7 +19,14 @@ public class SoundFXPlayer : MonoBehaviour {
     }
 
     private void Update() {
+        if(updateManually) {
+            return;
+        }
 
+        PlayRandomSound();
+    }
+
+    public void PlayRandomSound() {
         if(audioTimer > 0) {
             audioTimer -= Time.deltaTime;
         } else {
@@ -34,6 +43,18 @@ public class SoundFXPlayer : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void PlayRandomSoundWithoutTimer() {
+        audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+        audioSource.Play();
+        audioIsActive = true;
+    }
+
+    public void PlayOtherRandomSoundWithoutTimer() {
+        audioSource.clip = audioClips2[Random.Range(0, audioClips2.Length)];
+        audioSource.Play();
+        audioIsActive = true;
     }
 
 }

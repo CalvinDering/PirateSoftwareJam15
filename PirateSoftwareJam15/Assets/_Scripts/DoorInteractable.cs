@@ -8,10 +8,15 @@ public class DoorInteractable : MonoBehaviour, IInteractable {
     [SerializeField] private float rotationAngle = 120f;
     [SerializeField] private float rotationSpeed = 5f;
 
+    private SoundFXPlayer audioPlayer;
     private Quaternion targetRotation;
 
     private bool isOpen = false;
     private bool isMoving = false;
+
+    private void Awake() {
+        audioPlayer = GetComponent<SoundFXPlayer>();
+    }
 
     private void Update() {
 
@@ -36,5 +41,10 @@ public class DoorInteractable : MonoBehaviour, IInteractable {
 
         isOpen = !isOpen;
         isMoving = true;
+        if(isOpen) {
+            audioPlayer.PlayRandomSoundWithoutTimer();
+        } else {
+            audioPlayer.PlayOtherRandomSoundWithoutTimer();
+        }
     }
 }
