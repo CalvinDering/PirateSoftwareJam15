@@ -26,8 +26,9 @@ public class GameHandler : MonoBehaviour {
     private void Awake() {
         musicians = new List<MusicianNPC>();
         for(int i = 0; i < musicianSpawns.Length; i++) {
-            int spawnIndex = Random.Range(0, musicianSpawns[i].spawnpoints.Length);
-            MusicianNPC musician = Instantiate(musicianSpawns[i].musician, musicianSpawns[i].spawnpoints[spawnIndex]);
+            int spawnIndex = Random.Range(0, musicianSpawns[i].spawns.Length);
+            MusicianNPC musician = Instantiate(musicianSpawns[i].musician, musicianSpawns[i].spawns[spawnIndex].spawnpoint);
+            musician.SetRoom(musicianSpawns[i].spawns[spawnIndex].room);
             musicians.Add(musician);
         }
         energy = 100;
@@ -81,6 +82,27 @@ public class GameHandler : MonoBehaviour {
 
 [System.Serializable]
 public class MusicianSpawn {
-    public Transform[] spawnpoints;
+    public Spawn[] spawns;
     public MusicianNPC musician;
+}
+
+[System.Serializable]
+public class Spawn {
+    public Room room;
+    public Transform spawnpoint;
+}
+
+[System.Serializable]
+public class Room {
+    public Transform[] corners;
+
+    public bool IsInside(Vector3 position) {
+        if(position.x < corners[0].position.x || position.x > corners[1].position.x) {
+            return false;
+        }
+        if(position.z < corners[0].position.z || position.z > corners[1].position.z) {
+            return false;
+        }
+        return true;
+    }
 }

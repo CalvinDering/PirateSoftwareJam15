@@ -57,10 +57,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void CheckLight() {
-        RaycastHit[] hits = ConeCastAll(lightPoint.position, lightRadius, lightPoint.forward, maxLightRange, lightAngle);
-        if(hits.Length > 0) {
-            if(hits[0].collider.gameObject.TryGetComponent(out ILightable lightable)) {
-                lightable.Lighten();
+        //RaycastHit[] hits = ConeCastAll(lightPoint.position, lightRadius, lightPoint.forward, maxLightRange, lightAngle);
+        RaycastHit[] hits = Physics.SphereCastAll(lightPoint.position - new Vector3(0, 0, lightRadius), lightRadius, lightPoint.forward, maxLightRange);
+        for(int i = 0; i < hits.Length; i++) {
+            if(hits[i].collider.gameObject.TryGetComponent(out MusicianNPC musician)) {
+                Debug.Log("Detected Musician " + musician.name);
+                if(musician.GetRoom().IsInside(transform.position)) {
+                    musician.Lighten();
+                }
             }
             //hits.Where(c => c.collider.gameObject.TryGetComponent(out ILightable lightable)).ToList().ForEach(l => l.collider.GetComponent<ILightable>().Lighten());
         }

@@ -13,6 +13,15 @@ public class MusicianNPC : NPC, ILightable {
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private bool lerpAnimations = true;
 
+    [SerializeField] private float audioCooldown = 10f;
+    [SerializeField] private AudioClip[] audioClips;
+    private AudioSource audioSource;
+    private bool audioIsActive = false;
+
+    private float audioTimer;
+
+    private Room room;
+
     [HideInInspector] public float energy;
     private float problemValue;
 
@@ -23,7 +32,8 @@ public class MusicianNPC : NPC, ILightable {
     private GameObject[] problemObject;
 
     private void Awake() {
-       problemObject = new GameObject[spawnPositions.Length];
+        problemObject = new GameObject[spawnPositions.Length];
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -37,6 +47,9 @@ public class MusicianNPC : NPC, ILightable {
             } else {
                 problemValue = 1;
             }
+
+            PlayRandomAudio();
+
         } else {
             if(lerpAnimations) {
                 problemValue = Mathf.Lerp(problemValue, 0, Time.deltaTime);
@@ -80,6 +93,7 @@ public class MusicianNPC : NPC, ILightable {
         }
         cooldownTimer = cooldownTime;
         isProblemSpawned = false;
+        StopAudio();
     }
 
     public void Lighten() {
@@ -109,6 +123,38 @@ public class MusicianNPC : NPC, ILightable {
             return true;
         }
         return false;
+    }
+
+    private void PlayRandomAudio() {
+
+        if(audioTimer > 0) {
+            audioTimer -= Time.deltaTime;
+        } else {
+            if(!audioIsActive) {
+                if(!audioSource.isPlaying) {
+                    audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+                    audioSource.Play();
+                    audioIsActive = true;
+                }
+            } else {
+                if(!audioSource.isPlaying) {
+                    audioTimer = audioCooldown;
+                    audioIsActive = false;
+                }
+            }
+        }
+    }
+
+    private void StopAudio() {
+        audioSource.Stop();
+    }
+
+    public void SetRoom(Room room) {
+        this.room = room;
+    }
+
+    public Room GetRoom() {
+        return room;
     }
 
     private void OnDrawGizmos() {
