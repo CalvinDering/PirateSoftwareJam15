@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3837658360485283847}
   - component: {fileID: 4158765030138288847}
   - component: {fileID: 6925839147632648886}
-  - component: {fileID: 4511517842291890904}
+  - component: {fileID: 8009369849741535816}
   m_Layer: 0
   m_Name: Musician_Drink
   m_TagString: BlockFlashlight
@@ -111,13 +111,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lerpAnimations: 1
-  audioCooldown: 10
+  audioCooldown: 3
   audioClips:
-  - {fileID: 8300000, guid: 0303c089f8bb15c4381071cdda36836a, type: 3}
+  - {fileID: 8300000, guid: 5719f9bb9662d314986632772b78410d, type: 3}
+  - {fileID: 8300000, guid: 4ad723aa8cfc5b945a2363fcde51fc8f, type: 3}
+  - {fileID: 8300000, guid: 0e3f690a69b89354e9d08b080711e251, type: 3}
+  - {fileID: 8300000, guid: ae3ac0dadfbcd4248be9b5b5f7e2a44c, type: 3}
+  - {fileID: 8300000, guid: f207d2a6345278d4b9fec932a1a159eb, type: 3}
   energy: 0
   isProblemSpawned: 0
   nightStarted: 0
---- !u!82 &4511517842291890904
+--- !u!82 &8009369849741535816
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,10 +130,11 @@ AudioSource:
   m_GameObject: {fileID: 2446407585547018887}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7503671954909733306, guid: b786af293101431498c3d5130ecb7c55,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.248
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -138,9 +143,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -150,12 +155,21 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -4.7759676
+      outSlope: -4.7759676
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.07668711
+    - serializedVersion: 3
+      time: 0.30706087
+      value: 0.27324516
+      inSlope: -1.0489717
+      outSlope: -1.0489717
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.43058
+      outWeight: 0.23044965
     - serializedVersion: 3
       time: 1
       value: 0
@@ -188,7 +202,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.027777778
       inSlope: 0
       outSlope: 0
       tangentMode: 0

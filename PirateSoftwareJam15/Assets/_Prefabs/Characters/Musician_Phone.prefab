@@ -1425,6 +1425,11 @@ MonoBehaviour:
   audioCooldown: 10
   audioClips:
   - {fileID: 8300000, guid: a8345e6c84d048e43a586a0a1a3d16c1, type: 3}
+  - {fileID: 8300000, guid: 22a85f7d04b64354cba4eabe7c263210, type: 3}
+  - {fileID: 8300000, guid: 433812633de7c5847a996ef509d693fb, type: 3}
+  - {fileID: 8300000, guid: 977bc10c1b15e3d4dbdd867acfab0dc8, type: 3}
+  - {fileID: 8300000, guid: 11a7f45ea4aa9c745aaad7798c644fcb, type: 3}
+  - {fileID: 8300000, guid: 2c33001844b432d43818e2dbb78b5e26, type: 3}
   energy: 0
   isProblemSpawned: 0
   nightStarted: 0
@@ -1437,10 +1442,11 @@ AudioSource:
   m_GameObject: {fileID: 5939777744871094943}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7503671954909733306, guid: b786af293101431498c3d5130ecb7c55,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.461
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1449,9 +1455,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1461,12 +1467,21 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -4.7759676
+      outSlope: -4.7759676
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.07668711
+    - serializedVersion: 3
+      time: 0.30706087
+      value: 0.27324516
+      inSlope: -1.0489717
+      outSlope: -1.0489717
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.43058
+      outWeight: 0.23044965
     - serializedVersion: 3
       time: 1
       value: 0
@@ -1499,7 +1514,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.027777778
       inSlope: 0
       outSlope: 0
       tangentMode: 0
