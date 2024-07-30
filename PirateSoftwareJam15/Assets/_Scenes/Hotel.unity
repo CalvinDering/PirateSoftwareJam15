@@ -135481,7 +135481,7 @@ MonoBehaviour:
       type: 3}
   player: {fileID: 31304043}
   mainMenuScene: 0
-  nightTime: 1000
+  nightTime: 300
   startgameText: {fileID: 2031455978}
   endgameStats: {fileID: 659113136}
   playerSpawnpoint: {fileID: 887338041}
