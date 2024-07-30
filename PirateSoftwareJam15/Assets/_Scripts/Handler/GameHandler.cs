@@ -63,7 +63,7 @@ public class GameHandler : MonoBehaviour {
         musicians.ForEach(m => m.StartNight());
         startgameText.SetActive(false);
         player.transform.position = playerSpawnpoint.position;
-        player.transform.rotation = Quaternion.identity;
+        player.transform.rotation = playerSpawnpoint.rotation;
         player.gameStated = true;
     }
 

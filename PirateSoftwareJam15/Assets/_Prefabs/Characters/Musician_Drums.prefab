@@ -1230,14 +1230,14 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 6992177986075048974}
   - {fileID: 3127338332587101461}
-  cooldownTime: 1
-  despawnWaitingTime: 0
+  cooldownTime: 30
+  despawnWaitingTime: 1
   checkRadius: 10
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
   lerpAnimations: 1
-  audioCooldown: 10
+  audioCooldown: 5
   audioClips:
   - {fileID: 8300000, guid: 51978fe232025a24db8c34d09ea638d2, type: 3}
   energy: 0

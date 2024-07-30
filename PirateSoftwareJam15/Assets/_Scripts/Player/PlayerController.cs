@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float lightRadius;
     [SerializeField] private float maxLightRange;
     [SerializeField] private float lightAngle;
+    [SerializeField] private AudioClip[] audioClips;
+    private int lastAudioIndex = -1;
+
+    private AudioSource playerAudioSource;
+
 
     [HideInInspector] public bool gameStated = false;
     private bool pauseMoving = false;
@@ -31,6 +36,7 @@ public class PlayerController : MonoBehaviour {
         playerRB = GetComponent<Rigidbody>();
         inputHandler = InputHandler.Instance;
         playerUI = GetComponent<PlayerUI>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -103,6 +109,19 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void PlayRandomAudio() {
+        int randomIndex = Random.Range(0, audioClips.Length);
+        if(randomIndex == lastAudioIndex) {
+            randomIndex++;
+            if(randomIndex >= audioClips.Length) {
+                randomIndex = 0;
+            }
+        }
+        lastAudioIndex = randomIndex;
+        playerAudioSource.clip = audioClips[randomIndex];
+        playerAudioSource.Play();
     }
 
     // Credits to: https://github.com/walterellisfun/ConeCast/tree/master

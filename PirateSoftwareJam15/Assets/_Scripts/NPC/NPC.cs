@@ -21,7 +21,7 @@ public class NPC : MonoBehaviour, IInteractable {
     private float waitingTimer;
     private float targetAngle;
 
-    private void Start() {
+    protected virtual void Awake() {
         npcRB = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         originTargetPosition = transform.position + transform.forward;

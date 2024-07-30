@@ -1856,17 +1856,17 @@ MonoBehaviour:
     type: 3}
   spawnPositions:
   - {fileID: 5208155917688826605}
-  cooldownTime: 1
-  despawnWaitingTime: 0
-  checkRadius: 10
+  cooldownTime: 15
+  despawnWaitingTime: 1
+  checkRadius: 6
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
   lerpAnimations: 0
   audioCooldown: 1
   audioClips:
-  - {fileID: 8300000, guid: 1f74d7ed848565544b616b06a75bec68, type: 3}
-  - {fileID: 8300000, guid: 63ede2135adb7ae45a78074837caee5f, type: 3}
+  - {fileID: 8300000, guid: dea5e07e3f2d7a549bd37c96ef4b931f, type: 3}
+  - {fileID: 8300000, guid: f96b224e69f18db42803c894aa6706e2, type: 3}
   energy: 0
   isProblemSpawned: 0
   nightStarted: 0

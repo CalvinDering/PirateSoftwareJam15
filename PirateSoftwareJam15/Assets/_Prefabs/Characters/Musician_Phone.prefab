@@ -1415,14 +1415,14 @@ MonoBehaviour:
     type: 3}
   spawnPositions:
   - {fileID: 1526258929234067702}
-  cooldownTime: 1
-  despawnWaitingTime: 0
-  checkRadius: 10
+  cooldownTime: 20
+  despawnWaitingTime: 1
+  checkRadius: 5
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
   lerpAnimations: 1
-  audioCooldown: 10
+  audioCooldown: 5
   audioClips:
   - {fileID: 8300000, guid: a8345e6c84d048e43a586a0a1a3d16c1, type: 3}
   - {fileID: 8300000, guid: 22a85f7d04b64354cba4eabe7c263210, type: 3}
@@ -1446,7 +1446,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1455,7 +1455,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 18
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0

@@ -104,20 +104,22 @@ MonoBehaviour:
     type: 3}
   spawnPositions:
   - {fileID: 6428579786954813669}
-  cooldownTime: 1
-  despawnWaitingTime: 0
-  checkRadius: 10
+  cooldownTime: 20
+  despawnWaitingTime: 1
+  checkRadius: 7
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
   lerpAnimations: 1
   audioCooldown: 3
   audioClips:
+  - {fileID: 8300000, guid: 0303c089f8bb15c4381071cdda36836a, type: 3}
   - {fileID: 8300000, guid: 5719f9bb9662d314986632772b78410d, type: 3}
   - {fileID: 8300000, guid: 4ad723aa8cfc5b945a2363fcde51fc8f, type: 3}
   - {fileID: 8300000, guid: 0e3f690a69b89354e9d08b080711e251, type: 3}
-  - {fileID: 8300000, guid: ae3ac0dadfbcd4248be9b5b5f7e2a44c, type: 3}
+  - {fileID: 8300000, guid: ea1b9f1e62b129243835def555c7a357, type: 3}
   - {fileID: 8300000, guid: f207d2a6345278d4b9fec932a1a159eb, type: 3}
+  - {fileID: 8300000, guid: ae3ac0dadfbcd4248be9b5b5f7e2a44c, type: 3}
   energy: 0
   isProblemSpawned: 0
   nightStarted: 0

@@ -1703,9 +1703,9 @@ MonoBehaviour:
     type: 3}
   spawnPositions:
   - {fileID: 2165506710256367787}
-  cooldownTime: 1
-  despawnWaitingTime: 0
-  checkRadius: 10
+  cooldownTime: 15
+  despawnWaitingTime: 1
+  checkRadius: 7
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64

@@ -15,6 +15,8 @@ public class MusicianNPC : NPC, ILightable {
 
     [SerializeField] private float audioCooldown = 10f;
     [SerializeField] private AudioClip[] audioClips;
+
+    private PlayerController player;
     private AudioSource audioSource;
     private bool audioIsActive = false;
 
@@ -27,13 +29,20 @@ public class MusicianNPC : NPC, ILightable {
 
     private float cooldownTimer;
     [HideInInspector] public bool isProblemSpawned = false;
+    private bool isProblemHandleing = false;
     public bool nightStarted = false;
 
     private GameObject[] problemObject;
 
-    private void Awake() {
+    protected override void Awake() {
         problemObject = new GameObject[spawnPositions.Length];
         audioSource = GetComponent<AudioSource>();
+        cooldownTimer = cooldownTime;
+        base.Awake();
+    }
+
+    private void Start() {
+        player = FindObjectOfType<PlayerController>();
     }
 
     private void Update() {
@@ -58,7 +67,7 @@ public class MusicianNPC : NPC, ILightable {
             }
 
             if(CheckForPlayer()) {
-                cooldownTimer = cooldownTime * Random.Range(0.8f, 1.2f);
+                cooldownTimer = cooldownTime * Random.Range(0.8f, 1f);
             }
             if(cooldownTimer <= 0) {
                 SpawnProblem();
@@ -94,6 +103,7 @@ public class MusicianNPC : NPC, ILightable {
         cooldownTimer = cooldownTime;
         isProblemSpawned = false;
         StopAudio();
+        isProblemHandleing = false;
     }
 
     public void Lighten() {
@@ -114,7 +124,11 @@ public class MusicianNPC : NPC, ILightable {
         }
 
         if(isProblemSpawned) {
-            StartCoroutine(DespawnProblemObject());
+            if(!isProblemHandleing) {
+                isProblemHandleing = true;
+                player.PlayRandomAudio();
+                StartCoroutine(DespawnProblemObject());
+            }
         }
     }
 
