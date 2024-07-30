@@ -22,11 +22,15 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public bool gameStated = false;
     private bool pauseMoving = false;
 
+    private PlayerUI playerUI;
+    private IInteractable interactableObject;
+
     float rotationX = 0f;
 
     private void Awake() {
         playerRB = GetComponent<Rigidbody>();
         inputHandler = InputHandler.Instance;
+        playerUI = GetComponent<PlayerUI>();
     }
 
     private void Update() {
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         CheckLight();
+        CheckInteract();
     }
 
     private void FixedUpdate() {
@@ -69,7 +74,25 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void CheckInteract() {
+        Ray ray = new Ray(interactionPoint.position, interactionPoint.forward);
+        interactableObject = null;
+        if(Physics.Raycast(ray, out RaycastHit hit, interactionRange)) {
+            if(hit.collider.gameObject.TryGetComponent(out IInteractable interactable)) {
+                playerUI.ShowInteractionText();
+                interactableObject = interactable;
+            }
+        }
+        if(interactableObject == null) {
+            playerUI.Deactivate();
+        }
+    }
+
     public void Interact() {
+        if(interactableObject == null) {
+            return;
+        }
+        interactableObject.Interact(gameObject);
         Ray ray = new Ray(interactionPoint.position, interactionPoint.forward);
         if(Physics.Raycast(ray, out RaycastHit hit, interactionRange)) {
             if(hit.collider.gameObject.TryGetComponent(out IInteractable interactable)) {

@@ -17,7 +17,6 @@ public class IntroMusician : MonoBehaviour {
 
     private void Update() {
         if(timer < 0) {
-            Debug.Log("trigger");
             animator.SetTrigger("movement");
             timer += movementCooldown;
         } else {
