@@ -49,6 +49,7 @@ public class GameHandler : MonoBehaviour {
         }
     }
 
+
     private void GetMusicianEnergy() {
         foreach(MusicianNPC musician in musicians) {
             musician.EndNight();
@@ -65,6 +66,8 @@ public class GameHandler : MonoBehaviour {
         player.transform.position = playerSpawnpoint.position;
         player.transform.rotation = playerSpawnpoint.rotation;
         player.gameStated = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void EndNight() {
@@ -78,7 +81,9 @@ public class GameHandler : MonoBehaviour {
     }
 
     public void Retry() {
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenuScene);
+
     }
 
 }
