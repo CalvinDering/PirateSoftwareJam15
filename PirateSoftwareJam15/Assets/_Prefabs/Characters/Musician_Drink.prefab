@@ -106,7 +106,7 @@ MonoBehaviour:
   - {fileID: 6428579786954813669}
   cooldownTime: 1
   despawnWaitingTime: 0
-  checkRadius: 5
+  checkRadius: 10
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
