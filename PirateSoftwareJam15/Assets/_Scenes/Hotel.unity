@@ -2069,13 +2069,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 469287433920238224, guid: 10e186224b22f8d4c81d84454978fa97,
         type: 3}
+      propertyPath: lookSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469287433920238224, guid: 10e186224b22f8d4c81d84454978fa97,
+        type: 3}
       propertyPath: lightAngle
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 469287433920238224, guid: 10e186224b22f8d4c81d84454978fa97,
         type: 3}
       propertyPath: lightRadius
-      value: 3
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 469287433920238224, guid: 10e186224b22f8d4c81d84454978fa97,
+        type: 3}
+      propertyPath: playerSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 469287433920238224, guid: 10e186224b22f8d4c81d84454978fa97,
+        type: 3}
+      propertyPath: interactionRange
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 469287433920238224, guid: 10e186224b22f8d4c81d84454978fa97,
         type: 3}
@@ -2121,6 +2136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: near clip plane
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3880126096898901173, guid: 10e186224b22f8d4c81d84454978fa97,
+        type: 3}
+      propertyPath: m_Drag
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4213317191083066900, guid: 10e186224b22f8d4c81d84454978fa97,
         type: 3}

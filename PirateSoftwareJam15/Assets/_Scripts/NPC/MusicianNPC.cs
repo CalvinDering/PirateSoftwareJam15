@@ -12,6 +12,7 @@ public class MusicianNPC : NPC, ILightable {
     [SerializeField] private float checkRadius = 20f;
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private bool lerpAnimations = true;
+    [SerializeField] private bool playOnStart = false;
 
     [SerializeField] private float audioCooldown = 10f;
     [SerializeField] private AudioClip[] audioClips;
@@ -37,7 +38,11 @@ public class MusicianNPC : NPC, ILightable {
     protected override void Awake() {
         problemObject = new GameObject[spawnPositions.Length];
         audioSource = GetComponent<AudioSource>();
-        cooldownTimer = cooldownTime;
+        if(playOnStart) {
+            cooldownTimer = 0;
+        } else {
+            cooldownTimer = cooldownTime;
+        }
         base.Awake();
     }
 

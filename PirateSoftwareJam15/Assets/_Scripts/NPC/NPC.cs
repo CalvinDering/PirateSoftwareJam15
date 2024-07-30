@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class NPC : MonoBehaviour, IInteractable {
+public class NPC : MonoBehaviour {
 
     [SerializeField] private Waypoint[] allWaypoints;
     [SerializeField] private float movementSpeed;

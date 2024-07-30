@@ -78,10 +78,10 @@ public class GameHandler : MonoBehaviour {
         energyText.text = convertedEnergy.ToString() + "%";
         endgameStats.SetActive(true);
         player.gameStated = false;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Retry() {
-        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenuScene);
 
     }
