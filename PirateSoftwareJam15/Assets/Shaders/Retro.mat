@@ -38,8 +38,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorResolution: 64
-    - _DitherSpread: 0.02
+    - _ColorResolution: 96
+    - _DitherSpread: 0.001
     m_Colors:
     - _Vector4: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Vector4_1: {r: 0.5, g: 0.5, b: 0, a: 0}
