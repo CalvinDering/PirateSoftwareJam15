@@ -16,6 +16,7 @@ public class GameHandler : MonoBehaviour {
     [SerializeField] private float nightTime;
     [SerializeField] private GameObject startgameText;
     [SerializeField] private GameObject endgameStats;
+    [SerializeField] private Transform playerSpawnpoint;
     [SerializeField] private TextMeshProUGUI energyText;
 
     private float nightTimer;
@@ -61,6 +62,8 @@ public class GameHandler : MonoBehaviour {
         nightStarted = true;
         musicians.ForEach(m => m.StartNight());
         startgameText.SetActive(false);
+        player.transform.position = playerSpawnpoint.position;
+        player.transform.rotation = Quaternion.identity;
         player.gameStated = true;
     }
 
