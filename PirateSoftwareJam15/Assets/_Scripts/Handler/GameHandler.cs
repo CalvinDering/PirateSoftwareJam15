@@ -31,6 +31,8 @@ public class GameHandler : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI sliderValueText;
     [SerializeField] private TextMeshProUGUI sliderValueText2;
 
+    [SerializeField] private ProgressBar progressBar;
+
     private float nightTimer;
     private bool nightStarted = false;
     private bool gameEnded = false;
@@ -60,6 +62,9 @@ public class GameHandler : MonoBehaviour {
         } else {
             nightTimer -= Time.deltaTime;
         }
+
+        float nightProgress = nightTimer * 100 / nightTime;
+        progressBar.SetFill(nightProgress);
     }
 
 
@@ -84,6 +89,7 @@ public class GameHandler : MonoBehaviour {
         startgameText.SetActive(false);
         mouseSensText.SetActive(false);
         additionalText.SetActive(false);
+        progressBar.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
 
         yield return new WaitForSeconds(fadeTime);
@@ -139,6 +145,7 @@ public class GameHandler : MonoBehaviour {
         endgameStats.SetActive(true);
         mouseSensText.SetActive(true);
         additionalText.SetActive(true);
+        progressBar.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
     }
 
@@ -164,6 +171,7 @@ public class GameHandler : MonoBehaviour {
         endgameStats.SetActive(false);
         mouseSensText.SetActive(true);
         additionalText.SetActive(true);
+        progressBar.gameObject.SetActive(false);
         player.transform.position = lobbySpawnpoint.position;
         player.transform.rotation = lobbySpawnpoint.rotation;
         player.gameStarted = false;
