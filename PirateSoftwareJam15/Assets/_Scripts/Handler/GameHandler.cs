@@ -84,6 +84,7 @@ public class GameHandler : MonoBehaviour {
         fade.FadeIn();
         yield return new WaitForSeconds(fadeTime);
         player.transform.position = playerSpawnpoint.position;
+        player.GetComponentInChildren<Camera>().transform.localRotation = Quaternion.Euler(0, 0, 0);
         player.transform.rotation = playerSpawnpoint.rotation;
 
         startgameText.SetActive(false);
@@ -111,6 +112,7 @@ public class GameHandler : MonoBehaviour {
         fade.FadeIn();
         yield return new WaitForSeconds(fadeTime);
         player.transform.position = lobbySpawnpoint.position;
+        player.GetComponentInChildren<Camera>().transform.localRotation = Quaternion.Euler(0, 0, 0);
         player.transform.rotation = lobbySpawnpoint.rotation;
         CalcEnergy();
 
@@ -174,6 +176,7 @@ public class GameHandler : MonoBehaviour {
         additionalText.SetActive(true);
         progressBar.gameObject.SetActive(false);
         player.transform.position = lobbySpawnpoint.position;
+        player.GetComponentInChildren<Camera>().transform.localRotation = Quaternion.Euler(0, 0, 0);
         player.transform.rotation = lobbySpawnpoint.rotation;
         player.gameStarted = false;
         gameEnded = false;
