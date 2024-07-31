@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     private AudioSource playerAudioSource;
 
+    private float sensitivity;
 
     [HideInInspector] public bool gameStated = false;
     private bool pauseMoving = false;
@@ -64,7 +65,15 @@ public class PlayerController : MonoBehaviour {
         rotationX += -inputHandler.Look.y * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         cameraTransform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.Rotate(Vector3.up * inputHandler.Look.x * lookSpeed);
+        transform.Rotate(Vector3.up * inputHandler.Look.x * lookSpeed * sensitivity);
+    }
+
+    public void SetSensitivity(float speed) {
+        sensitivity = speed;
+    }
+
+    public float GetSensitivity() {
+        return sensitivity;
     }
 
     public void CheckLight() {

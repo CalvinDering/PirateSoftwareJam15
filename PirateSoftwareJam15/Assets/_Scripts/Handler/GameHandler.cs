@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour {
 
@@ -18,10 +19,14 @@ public class GameHandler : MonoBehaviour {
     [SerializeField] private float nightTime;
     [SerializeField] private GameObject startgameText;
     [SerializeField] private GameObject endgameStats;
+    [SerializeField] private GameObject mouseSensText;
     [SerializeField] private GameObject nightIsOverText;
     [SerializeField] private Transform playerSpawnpoint;
     [SerializeField] private Transform lobbySpawnpoint;
     [SerializeField] private TextMeshProUGUI energyText;
+
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI sliderValueText;
 
     private float nightTimer;
     private bool nightStarted = false;
@@ -31,6 +36,10 @@ public class GameHandler : MonoBehaviour {
 
     private void Awake() {
         Restart();
+        slider.onValueChanged.AddListener(delegate {
+            ValueChangeCheck();
+        });
+        ValueChangeCheck();
     }
 
     private void Update() {
@@ -64,6 +73,7 @@ public class GameHandler : MonoBehaviour {
         nightStarted = true;
         musicians.ForEach(m => m.StartNight());
         startgameText.SetActive(false);
+        mouseSensText.SetActive(false);
         player.transform.position = playerSpawnpoint.position;
         player.transform.rotation = playerSpawnpoint.rotation;
         player.gameStated = true;
@@ -109,6 +119,7 @@ public class GameHandler : MonoBehaviour {
 
     private void ShowStats() {
         endgameStats.SetActive(true);
+        mouseSensText.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
     }
 
@@ -132,10 +143,16 @@ public class GameHandler : MonoBehaviour {
         }
         energy = 100;
         endgameStats.SetActive(false);
+        mouseSensText.SetActive(true);
         player.transform.position = lobbySpawnpoint.position;
         player.transform.rotation = lobbySpawnpoint.rotation;
         player.gameStated = false;
         gameEnded = false;
+    }
+
+    private void ValueChangeCheck() {
+        player.SetSensitivity(slider.value);
+        sliderValueText.text = slider.value.ToString("F2");
     }
 
 }
