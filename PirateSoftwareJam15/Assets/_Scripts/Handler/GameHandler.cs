@@ -9,6 +9,8 @@ public class GameHandler : MonoBehaviour {
 
 
     private List<MusicianNPC> musicians;
+    private List<IntroMusician> introMusicians;
+    private Fade fade;
 
     [SerializeField] private MusicianSpawn[] musicianSpawns;
     [SerializeField] private PlayerController player;
@@ -17,6 +19,7 @@ public class GameHandler : MonoBehaviour {
     [SerializeField] private GameObject startgameText;
     [SerializeField] private GameObject endgameStats;
     [SerializeField] private Transform playerSpawnpoint;
+    [SerializeField] private Transform lobbySpawnpoint;
     [SerializeField] private TextMeshProUGUI energyText;
 
     private float nightTimer;
@@ -25,7 +28,9 @@ public class GameHandler : MonoBehaviour {
     private float energy;
 
     private void Awake() {
+        fade = GetComponent<Fade>();
         musicians = new List<MusicianNPC>();
+        introMusicians = FindObjectsOfType<IntroMusician>().ToList();
         for(int i = 0; i < musicianSpawns.Length; i++) {
             int spawnIndex = Random.Range(0, musicianSpawns[i].spawns.Length);
             MusicianNPC musician = Instantiate(musicianSpawns[i].musician, musicianSpawns[i].spawns[spawnIndex].spawnpoint);
@@ -34,6 +39,8 @@ public class GameHandler : MonoBehaviour {
         }
         energy = 100;
         endgameStats.SetActive(false);
+        player.transform.position = lobbySpawnpoint.position;
+        player.transform.rotation = lobbySpawnpoint.rotation;
         player.gameStated = false;
     }
 
@@ -43,7 +50,7 @@ public class GameHandler : MonoBehaviour {
         }
 
         if(nightTimer <= 0) {
-            EndNight();
+            StartCoroutine(EndNight());
         } else {
             nightTimer -= Time.deltaTime;
         }
@@ -70,20 +77,46 @@ public class GameHandler : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void EndNight() {
+    private IEnumerator EndNight() {
+        player.gameStated = false;
+        float fadeTime = fade.GetTimeToFade();
+
+        fade.FadeIn();
+        yield return new WaitForSeconds(fadeTime);
+        player.transform.position = lobbySpawnpoint.position;
+        player.transform.rotation = lobbySpawnpoint.rotation;
+        CalcEnergy();
+
+        fade.FadeOut();
+        yield return new WaitForSeconds(fadeTime);
+
+        ShowStats();
+    }
+
+    private void CalcEnergy() {
         GetMusicianEnergy();
         float reachedEnergy = energy / musicians.Count * 100 / nightTime;
         nightStarted = false;
         int convertedEnergy = Mathf.Clamp((int) reachedEnergy, 0, 100);
         energyText.text = convertedEnergy.ToString() + "%";
+
+        int energyPerMusician = 100 / musicians.Count;
+        for(int m = 0; m < introMusicians.Count; m++) {
+            if(convertedEnergy >= (m + 1) * energyPerMusician) {
+                introMusicians[m].DisplayAsZombie(true);
+            } else {
+                introMusicians[m].DisplayAsZombie(false);
+            }
+        }
+    }
+
+    private void ShowStats() {
         endgameStats.SetActive(true);
-        player.gameStated = false;
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void Retry() {
         SceneManager.LoadScene(mainMenuScene);
-
     }
 
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class IntroMusician : MonoBehaviour {
 
+    [SerializeField] private GameObject normalCharacter;
+    [SerializeField] private GameObject zombieCharacter;
+    [SerializeField] private GameObject extraObject;
+
     private Animator animator;
 
     [SerializeField] private float movementCooldown = 5f;
@@ -11,7 +15,7 @@ public class IntroMusician : MonoBehaviour {
     private float timer;
 
     private void Awake() {
-        animator = GetComponentInChildren<Animator>();
+        DisplayAsZombie(false);
         timer = movementCooldown;
     }
 
@@ -22,7 +26,22 @@ public class IntroMusician : MonoBehaviour {
         } else {
             timer -= Time.deltaTime;
         }
+    }
 
+    public void DisplayAsZombie(bool zombie) {
+        zombieCharacter.SetActive(zombie);
+        normalCharacter.SetActive(!zombie);
+        if(extraObject != null) {
+            extraObject.SetActive(!zombie);
+        }
+
+        if(zombie) {
+            animator = zombieCharacter.GetComponent<Animator>();
+        } else {
+            animator = normalCharacter.GetComponent<Animator>();
+        }
+
+        animator.SetBool("zombie", zombie);
     }
 
 }
