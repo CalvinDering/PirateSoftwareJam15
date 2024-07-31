@@ -114,6 +114,7 @@ public class GameHandler : MonoBehaviour {
         player.transform.rotation = lobbySpawnpoint.rotation;
         CalcEnergy();
 
+        progressBar.gameObject.SetActive(false);
         nightIsOverText.SetActive(true);
         yield return new WaitForSeconds(fadeTime);
 
