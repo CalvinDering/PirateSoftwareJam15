@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerUI : MonoBehaviour {
 
     [SerializeField] private TextMeshProUGUI interactionTextfield;
+    [SerializeField] private TextMeshProUGUI interactionTextfield2;
     [SerializeField] private string interactionText;
 
     private void Awake() {
@@ -18,6 +19,7 @@ public class PlayerUI : MonoBehaviour {
 
     public void ShowText(string text) {
         interactionTextfield.text = text;
+        interactionTextfield2.text = text;
         interactionTextfield.gameObject.SetActive(true);
     }
 

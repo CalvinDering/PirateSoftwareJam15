@@ -18,15 +18,18 @@ public class GameHandler : MonoBehaviour {
     [SerializeField] private int mainMenuScene;
     [SerializeField] private float nightTime;
     [SerializeField] private GameObject startgameText;
+    [SerializeField] private GameObject additionalText;
     [SerializeField] private GameObject endgameStats;
     [SerializeField] private GameObject mouseSensText;
     [SerializeField] private GameObject nightIsOverText;
     [SerializeField] private Transform playerSpawnpoint;
     [SerializeField] private Transform lobbySpawnpoint;
     [SerializeField] private TextMeshProUGUI energyText;
+    [SerializeField] private TextMeshProUGUI energyText2;
 
     [SerializeField] private Slider slider;
     [SerializeField] private TextMeshProUGUI sliderValueText;
+    [SerializeField] private TextMeshProUGUI sliderValueText2;
 
     private float nightTimer;
     private bool nightStarted = false;
@@ -74,6 +77,7 @@ public class GameHandler : MonoBehaviour {
         musicians.ForEach(m => m.StartNight());
         startgameText.SetActive(false);
         mouseSensText.SetActive(false);
+        additionalText.SetActive(false);
         player.transform.position = playerSpawnpoint.position;
         player.transform.rotation = playerSpawnpoint.rotation;
         player.gameStated = true;
@@ -106,6 +110,7 @@ public class GameHandler : MonoBehaviour {
         nightStarted = false;
         int convertedEnergy = Mathf.Clamp((int) reachedEnergy, 0, 100);
         energyText.text = convertedEnergy.ToString() + "%";
+        energyText2.text = convertedEnergy.ToString() + "%";
 
         int energyPerMusician = 100 / musicians.Count;
         for(int m = 0; m < introMusicians.Count; m++) {
@@ -153,6 +158,7 @@ public class GameHandler : MonoBehaviour {
     private void ValueChangeCheck() {
         player.SetSensitivity(slider.value);
         sliderValueText.text = slider.value.ToString("F2");
+        sliderValueText2.text = slider.value.ToString("F2");
     }
 
 }
