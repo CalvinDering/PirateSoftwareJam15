@@ -30,22 +30,7 @@ public class GameHandler : MonoBehaviour {
     private float energy;
 
     private void Awake() {
-        fade = GetComponent<Fade>();
-        musicians = new List<MusicianNPC>();
-        introMusicians = FindObjectsOfType<IntroMusician>().ToList();
-        nightIsOverText.SetActive(false);
-        for(int i = 0; i < musicianSpawns.Length; i++) {
-            int spawnIndex = Random.Range(0, musicianSpawns[i].spawns.Length);
-            MusicianNPC musician = Instantiate(musicianSpawns[i].musician, musicianSpawns[i].spawns[spawnIndex].spawnpoint);
-            musician.SetRoom(musicianSpawns[i].spawns[spawnIndex].room);
-            musicians.Add(musician);
-        }
-        energy = 100;
-        endgameStats.SetActive(false);
-        player.transform.position = lobbySpawnpoint.position;
-        player.transform.rotation = lobbySpawnpoint.rotation;
-        player.gameStated = false;
-        gameEnded = false;
+        Restart();
     }
 
     private void Update() {
@@ -128,7 +113,29 @@ public class GameHandler : MonoBehaviour {
     }
 
     public void Retry() {
-        SceneManager.LoadScene(mainMenuScene);
+        musicians.ForEach(m => Destroy(m.gameObject));
+
+        Restart();
+        StartNight();
+    }
+
+    public void Restart() {
+        fade = GetComponent<Fade>();
+        musicians = new List<MusicianNPC>();
+        introMusicians = FindObjectsOfType<IntroMusician>().ToList();
+        nightIsOverText.SetActive(false);
+        for(int i = 0; i < musicianSpawns.Length; i++) {
+            int spawnIndex = Random.Range(0, musicianSpawns[i].spawns.Length);
+            MusicianNPC musician = Instantiate(musicianSpawns[i].musician, musicianSpawns[i].spawns[spawnIndex].spawnpoint);
+            musician.SetRoom(musicianSpawns[i].spawns[spawnIndex].room);
+            musicians.Add(musician);
+        }
+        energy = 100;
+        endgameStats.SetActive(false);
+        player.transform.position = lobbySpawnpoint.position;
+        player.transform.rotation = lobbySpawnpoint.rotation;
+        player.gameStated = false;
+        gameEnded = false;
     }
 
 }
