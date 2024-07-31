@@ -50233,17 +50233,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623543084}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 659113137}
+  m_Father: {fileID: 1428753448}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 150}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -266}
+  m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &623543086
 MonoBehaviour:
@@ -50292,8 +50292,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -53152,7 +53152,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 623543085}
   - {fileID: 705236991}
   - {fileID: 342101814}
   - {fileID: 162621964}
@@ -53161,8 +53160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 500}
+  m_AnchoredPosition: {x: 0, y: -94}
+  m_SizeDelta: {x: 500, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659113138
 MonoBehaviour:
@@ -114303,6 +114302,7 @@ RectTransform:
   m_Children:
   - {fileID: 289898512}
   - {fileID: 2031455979}
+  - {fileID: 623543085}
   - {fileID: 659113137}
   - {fileID: 2084370682}
   m_Father: {fileID: 0}
@@ -135539,6 +135539,7 @@ MonoBehaviour:
   nightTime: 30
   startgameText: {fileID: 2031455978}
   endgameStats: {fileID: 659113136}
+  nightIsOverText: {fileID: 623543084}
   playerSpawnpoint: {fileID: 887338041}
   lobbySpawnpoint: {fileID: 338004594}
   energyText: {fileID: 342101815}
