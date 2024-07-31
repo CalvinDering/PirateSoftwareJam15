@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     private float sensitivity;
 
-    [HideInInspector] public bool gameStated = false;
+    [HideInInspector] public bool gameStarted = false;
     private bool pauseMoving = false;
 
     private PlayerUI playerUI;
@@ -41,7 +41,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        if(!gameStated) {
+        if(!gameStarted) {
+            if(interactableObject != null) {
+                interactableObject = null;
+                playerUI.Deactivate();
+            }
             return;
         }
         CheckLight();
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if(!gameStated) {
+        if(!gameStarted) {
             return;
         }
         Movement();

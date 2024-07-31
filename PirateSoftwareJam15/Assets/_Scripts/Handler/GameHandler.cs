@@ -71,22 +71,35 @@ public class GameHandler : MonoBehaviour {
     }
 
     public void StartNight() {
+        StartCoroutine(StartGameRound());
+    }
+
+    public IEnumerator StartGameRound() {
+        float fadeTime = fade.GetTimeToFade();
+        fade.FadeIn();
+        yield return new WaitForSeconds(fadeTime);
+        player.transform.position = playerSpawnpoint.position;
+        player.transform.rotation = playerSpawnpoint.rotation;
+
+        startgameText.SetActive(false);
+        mouseSensText.SetActive(false);
+        additionalText.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+
+        yield return new WaitForSeconds(fadeTime);
+
+        fade.FadeOut();
+        yield return new WaitForSeconds(fadeTime);
+
         energy = 0;
         nightTimer = nightTime;
         nightStarted = true;
         musicians.ForEach(m => m.StartNight());
-        startgameText.SetActive(false);
-        mouseSensText.SetActive(false);
-        additionalText.SetActive(false);
-        player.transform.position = playerSpawnpoint.position;
-        player.transform.rotation = playerSpawnpoint.rotation;
-        player.gameStated = true;
-
-        Cursor.lockState = CursorLockMode.Locked;
+        player.gameStarted = true;
     }
 
     private IEnumerator EndNight() {
-        player.gameStated = false;
+        player.gameStarted = false;
         float fadeTime = fade.GetTimeToFade();
 
         fade.FadeIn();
@@ -125,6 +138,7 @@ public class GameHandler : MonoBehaviour {
     private void ShowStats() {
         endgameStats.SetActive(true);
         mouseSensText.SetActive(true);
+        additionalText.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
     }
 
@@ -149,9 +163,10 @@ public class GameHandler : MonoBehaviour {
         energy = 100;
         endgameStats.SetActive(false);
         mouseSensText.SetActive(true);
+        additionalText.SetActive(true);
         player.transform.position = lobbySpawnpoint.position;
         player.transform.rotation = lobbySpawnpoint.rotation;
-        player.gameStated = false;
+        player.gameStarted = false;
         gameEnded = false;
     }
 

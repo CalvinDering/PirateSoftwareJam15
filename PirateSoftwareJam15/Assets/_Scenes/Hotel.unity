@@ -137765,7 +137765,7 @@ MonoBehaviour:
       type: 3}
   player: {fileID: 31304043}
   mainMenuScene: 0
-  nightTime: 300
+  nightTime: 5
   startgameText: {fileID: 2031455978}
   additionalText: {fileID: 1359561274}
   endgameStats: {fileID: 659113136}
@@ -141448,7 +141448,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
