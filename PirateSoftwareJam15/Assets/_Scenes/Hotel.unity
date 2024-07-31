@@ -6565,7 +6565,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 60432490e5ee9cb46abeba283697dd6b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6574,7 +6574,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 18
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -22766,7 +22766,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -53075,7 +53075,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 60432490e5ee9cb46abeba283697dd6b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -53084,7 +53084,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 18
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -76284,7 +76284,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.5
   m_Pitch: 0.93
   Loop: 1
   Mute: 0
@@ -85034,7 +85034,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 99320d5b425389440b2fac6daf323d85, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -139002,7 +139002,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -139108,7 +139108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: b4d40ab61894fc14fb3720e8cb902b2f, type: 3}
+  - {fileID: 8300000, guid: 3517f397ee52b674eae22cd3967cc2f2, type: 3}
   - {fileID: 8300000, guid: 0b8905359ea344940becce5b7f1bfc30, type: 3}
   audioClips2: []
   audioCooldown: 0

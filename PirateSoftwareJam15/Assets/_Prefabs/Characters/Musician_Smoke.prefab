@@ -3809,10 +3809,13 @@ MonoBehaviour:
     m_Bits: 64
   lerpAnimations: 1
   playOnStart: 0
-  audioCooldown: 3
+  audioCooldown: 2
   audioClips:
-  - {fileID: 8300000, guid: e50ec81d5c618474a8f98f20666be504, type: 3}
   - {fileID: 8300000, guid: 5436609563c06fe43bbc418cb3452d93, type: 3}
+  - {fileID: 8300000, guid: 5436609563c06fe43bbc418cb3452d93, type: 3}
+  - {fileID: 8300000, guid: e50ec81d5c618474a8f98f20666be504, type: 3}
+  - {fileID: 8300000, guid: e50ec81d5c618474a8f98f20666be504, type: 3}
+  - {fileID: 8300000, guid: e50ec81d5c618474a8f98f20666be504, type: 3}
   energy: 0
   isProblemSpawned: 0
   nightStarted: 0
