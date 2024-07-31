@@ -750,7 +750,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: You are the manager of the band RESTLESS and tomorrow is THE biggest concert.
     Equipped with this flashlight you can remind them to get enough sleep or they
-    will become the zombies they  truely are ...
+    will really get out of hand!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce284966e25325b48bfa76bb43c451d0, type: 2}
   m_sharedMaterial: {fileID: -5083332562129758796, guid: ce284966e25325b48bfa76bb43c451d0,
@@ -93094,7 +93094,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: You are the manager of the band RESTLESS and tomorrow is THE biggest concert.
     Equipped with this flashlight you can remind them to get enough sleep or they
-    will become the zombies they  truely are ...
+    will really get out of hand!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce284966e25325b48bfa76bb43c451d0, type: 2}
   m_sharedMaterial: {fileID: -5083332562129758796, guid: ce284966e25325b48bfa76bb43c451d0,
@@ -175972,7 +175972,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359450157809421148}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -177907,7 +177907,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720336772230353207}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -184709,7 +184709,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832800902739274374}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -185437,7 +185437,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4611712745789667630}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -185816,7 +185816,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6130726092385758015}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -188040,7 +188040,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723366410535496538}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -188362,7 +188362,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4225000240563320829}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -190990,7 +190990,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8454259549577219549}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -194512,7 +194512,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8573213209165366285}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
