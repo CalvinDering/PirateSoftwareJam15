@@ -8,4 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Hotel.unity
     guid: 4c31a0baa5405674095ff68075f21353
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: cf31cc0a8eb29ed458468b8aae966da8,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 0b8ac2ad7cf294f4ab2f98dc26310361,
+      type: 2}
